@@ -1,0 +1,91 @@
+﻿@model IEnumerable<EventManagementSystem.Models.Attendee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+    <div class="container">
+        @*@Html.ActionLink("Event Management App", "Login", "Attendees", new { area = "" }, new { @class = "navbar-brand" })
+        *@<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                  aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+                @*<li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Event Type", "Index", "EventTypes", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Venues", "Index", "Venues", new { area = "" }, new { @class = "nav-link" })</li>
+                *@
+                <li>@Html.ActionLink("Event Details", "Index", "EventDetails", new { area = "" }, new { @class = "nav-link" })</li>
+                <li>@Html.ActionLink("Attendees", "Index", "Attendees", new { area = "" }, new { @class = "nav-link" })</li>
+                <li>@Html.ActionLink("Event Registration", "Index", "EventRegistrations", new { area = "" }, new { @class = "nav-link" })</li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@*<p>
+    @using (Html.BeginForm("Index", "Attendees", FormMethod.Get))
+    {
+        <b>Search by name</b>
+        @Html.TextBox("search")
+        <input type="submit" value="Search" class="btn btn-success" />
+    }
+</p>*@
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phoneNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th></th>
+    </tr>
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td colspan="4" class="text-danger fw-bold">No data found</td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.phoneNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.address)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.uuID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.uuID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.uuID })
+                </td>
+            </tr>
+        }
+    }
+
+
+</table>

@@ -1,0 +1,31 @@
+﻿@page
+@model BloggerAPP.Pages.DisplayBlogsModel
+@{
+    <div class="Container" >
+
+    @if (Model.message.Length != 0)
+    {
+            //display only if there is something in the message variable
+        <div class="alert alert-primary">
+            @Model.message
+        </div>
+    }
+        @foreach (var blog in Model.postList)
+        {
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">@blog.title</h5>
+                    <p class="card-text">@blog.post</p>
+                    <a href="#" class="text-warning card-link">Edit</a>
+                    <a href="#" class="text-danger card-link">Delete</a>
+                </div>
+            </div>
+        }
+
+            
+            
+        
+        
+    </div>
+
+}

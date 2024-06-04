@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RSVPDBModelStoreContainer" CdmEntityContainer="RSVPDBEntities">
+    <EntitySetMapping Name="Attendees">
+      <EntityTypeMapping TypeName="RSVPDBModel.Attendee">
+        <MappingFragment StoreEntitySet="Attendee">
+          <ScalarProperty Name="uuid" ColumnName="uuid" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="address" ColumnName="address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SessionAttendances">
+      <EntityTypeMapping TypeName="RSVPDBModel.SessionAttendance">
+        <MappingFragment StoreEntitySet="SessionAttendance">
+          <ScalarProperty Name="uuid" ColumnName="uuid" />
+          <ScalarProperty Name="arrivalTime" ColumnName="arrivalTime" />
+          <ScalarProperty Name="attendeeId" ColumnName="attendeeId" />
+          <ScalarProperty Name="sessionId" ColumnName="sessionId" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SessionTbs">
+      <EntityTypeMapping TypeName="RSVPDBModel.SessionTb">
+        <MappingFragment StoreEntitySet="SessionTb">
+          <ScalarProperty Name="uuid" ColumnName="uuid" />
+          <ScalarProperty Name="sessionName" ColumnName="sessionName" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="timing" ColumnName="timing" />
+          <ScalarProperty Name="capacity" ColumnName="capacity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

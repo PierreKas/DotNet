@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Scaffoding.Models.SessionTb>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.sessionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.timing)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.capacity)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.sessionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.timing)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.capacity)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.uuid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.uuid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.uuid })
+        </td>
+    </tr>
+}
+
+</table>

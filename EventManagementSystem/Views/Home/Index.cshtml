@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<main class="container py-5">
+    <section class="row mb-5">
+        <div class="col-md-6 mx-auto text-center">
+            <h1 class="mb-4">Event Management System</h1>
+            <p class="lead">This system is helping to create, post, view, edit and delete events easily</p>
+        </div>
+    </section>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Register</h5>
+                    <p class="card-text">Create a new account to access our event management system.</p>
+                    @Html.ActionLink("Register", "Registration", "Authentications", null, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Login</h5>
+                    <p class="card-text">Log in to your account and start managing events.</p>
+                    @Html.ActionLink("Login", "Login", "Authentications", null, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>

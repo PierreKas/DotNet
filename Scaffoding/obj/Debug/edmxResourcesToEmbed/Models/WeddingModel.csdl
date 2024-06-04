@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RSVPDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Attendee">
+    <Key>
+      <PropertyRef Name="uuid" />
+    </Key>
+    <Property Name="uuid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="SessionAttendances" Relationship="Self.FK_SessionAttendance_Attendee" FromRole="Attendee" ToRole="SessionAttendance" />
+  </EntityType>
+  <EntityType Name="SessionAttendance">
+    <Key>
+      <PropertyRef Name="uuid" />
+    </Key>
+    <Property Name="uuid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="arrivalTime" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="attendeeId" Type="Int32" />
+    <Property Name="sessionId" Type="Int32" />
+    <Property Name="comment" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Attendee" Relationship="Self.FK_SessionAttendance_Attendee" FromRole="SessionAttendance" ToRole="Attendee" />
+    <NavigationProperty Name="SessionTb" Relationship="Self.FK_SessionAttendance_SessionTb" FromRole="SessionAttendance" ToRole="SessionTb" />
+  </EntityType>
+  <EntityType Name="SessionTb">
+    <Key>
+      <PropertyRef Name="uuid" />
+    </Key>
+    <Property Name="uuid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sessionName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="location" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="timing" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="capacity" Type="Int32" />
+    <NavigationProperty Name="SessionAttendances" Relationship="Self.FK_SessionAttendance_SessionTb" FromRole="SessionTb" ToRole="SessionAttendance" />
+  </EntityType>
+  <Association Name="FK_SessionAttendance_Attendee">
+    <End Role="Attendee" Type="Self.Attendee" Multiplicity="0..1" />
+    <End Role="SessionAttendance" Type="Self.SessionAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Attendee">
+        <PropertyRef Name="uuid" />
+      </Principal>
+      <Dependent Role="SessionAttendance">
+        <PropertyRef Name="attendeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SessionAttendance_SessionTb">
+    <End Role="SessionTb" Type="Self.SessionTb" Multiplicity="0..1" />
+    <End Role="SessionAttendance" Type="Self.SessionAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SessionTb">
+        <PropertyRef Name="uuid" />
+      </Principal>
+      <Dependent Role="SessionAttendance">
+        <PropertyRef Name="sessionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RSVPDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Attendees" EntityType="Self.Attendee" />
+    <EntitySet Name="SessionAttendances" EntityType="Self.SessionAttendance" />
+    <EntitySet Name="SessionTbs" EntityType="Self.SessionTb" />
+    <AssociationSet Name="FK_SessionAttendance_Attendee" Association="Self.FK_SessionAttendance_Attendee">
+      <End Role="Attendee" EntitySet="Attendees" />
+      <End Role="SessionAttendance" EntitySet="SessionAttendances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SessionAttendance_SessionTb" Association="Self.FK_SessionAttendance_SessionTb">
+      <End Role="SessionTb" EntitySet="SessionTbs" />
+      <End Role="SessionAttendance" EntitySet="SessionAttendances" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

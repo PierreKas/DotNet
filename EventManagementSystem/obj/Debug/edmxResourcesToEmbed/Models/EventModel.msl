@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EventMgtTBModelStoreContainer" CdmEntityContainer="EventMgtTBEntities">
+    <EntitySetMapping Name="Attendees">
+      <EntityTypeMapping TypeName="EventMgtTBModel.Attendee">
+        <MappingFragment StoreEntitySet="Attendee">
+          <ScalarProperty Name="uuID" ColumnName="uuID" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phoneNo" ColumnName="phoneNo" />
+          <ScalarProperty Name="fullName" ColumnName="fullName" />
+          <ScalarProperty Name="address" ColumnName="address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventDetails">
+      <EntityTypeMapping TypeName="EventMgtTBModel.EventDetail">
+        <MappingFragment StoreEntitySet="EventDetails">
+          <ScalarProperty Name="uuId" ColumnName="uuId" />
+          <ScalarProperty Name="eventName" ColumnName="eventName" />
+          <ScalarProperty Name="eventDescription" ColumnName="eventDescription" />
+          <ScalarProperty Name="venueID" ColumnName="venueID" />
+          <ScalarProperty Name="eventDate" ColumnName="eventDate" />
+          <ScalarProperty Name="eventTime" ColumnName="eventTime" />
+          <ScalarProperty Name="eventTypeID" ColumnName="eventTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventRegistrations">
+      <EntityTypeMapping TypeName="EventMgtTBModel.EventRegistration">
+        <MappingFragment StoreEntitySet="EventRegistration">
+          <ScalarProperty Name="uuID" ColumnName="uuID" />
+          <ScalarProperty Name="eventID" ColumnName="eventID" />
+          <ScalarProperty Name="AttendeeID" ColumnName="AttendeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventTypes">
+      <EntityTypeMapping TypeName="EventMgtTBModel.EventType">
+        <MappingFragment StoreEntitySet="EventType">
+          <ScalarProperty Name="uuId" ColumnName="uuId" />
+          <ScalarProperty Name="typeEvent" ColumnName="typeEvent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Venues">
+      <EntityTypeMapping TypeName="EventMgtTBModel.Venue">
+        <MappingFragment StoreEntitySet="Venue">
+          <ScalarProperty Name="uuId" ColumnName="uuId" />
+          <ScalarProperty Name="place" ColumnName="place" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="capacity" ColumnName="capacity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
